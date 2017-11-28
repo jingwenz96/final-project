@@ -1,0 +1,51 @@
+{% extends "project-base.html" %}
+
+{% block title %}Group Members{% endblock %}
+
+{% block head %}
+  {{ super () }}
+{% endblock %}
+
+{% block page_content %}
+<div class="container">
+<i class="fa fa-child fa-3x" aria-hidden="true"></i>
+<i class="fa fa-child fa-3x" aria-hidden="true"></i>
+<i class="fa fa-child fa-3x" aria-hidden="true"> Members</i>
+<br><br>
+
+<table class="table">
+     <thead>
+       <tr>
+         <th>#</th>
+         <th>Name</th>
+         <th>Major</th>
+         <th>Grade</th>
+       </tr>
+       <tr>
+         <td>1</td>
+         <td>Emily Zhang</td>
+         <td>MISY</td>
+         <td>Junior</td>
+       </tr>
+       <tr>
+         <td>2</td>
+         <td>Lujiang Chen</td>
+         <td>MISY</td>
+         <td>Junior</td>
+       </tr>
+       <tr>
+         <td>3</td>
+         <td>Jianzhao Guo</td>
+         <td>MISY</td>
+         <td>Sophomore</td>
+       </tr>
+     </thead>
+</table>
+</div>
+
+<style>
+ .fa {
+   color: SeaGreen;
+ }
+</style>
+{% endblock %}
