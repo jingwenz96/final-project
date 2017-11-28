@@ -13,13 +13,14 @@ db = SQLAlchemy(app)
 def home():
     return render_template('index.html')
 
-@app.route('/game')
-def game():
-    return render_template('game.html')
-
 @app.route('/members')
 def member():
     return render_template('members.html')
+
+@app.route('/games')
+def game():
+    return render_template('games.html')
+
 
 if __name__ == '__main__':
     app.run(debug=True)

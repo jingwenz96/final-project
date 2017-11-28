@@ -1,5 +1,5 @@
 from flask_script import Manager
-from database import app, db
+from videogame import app, db
 
 manager = Manager(app)
 
