@@ -18,5 +18,9 @@ def home():
 def member():
     return render_template('members.html')
 
+@app.route('/games')
+def games():
+    return render_template('games.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
