@@ -9,6 +9,15 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'data.sqlite')
 db = SQLAlchemy(app)
 
+# define database tables
+class Professor(db.Model):
+    __tablename__ = 'games'
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(64))
+    department = db.Column(db.String(64))
+    publisher = db.relationship('Course', backref='professor')
+
+
 @app.route('/')
 def home():
     return render_template('index.html')
@@ -20,6 +29,11 @@ def member():
 @app.route('/games')
 def game():
     return render_template('games.html')
+
+@app.route('/publisher')
+def publisher():
+    return render_template('publisher.html')
+
 
 
 if __name__ == '__main__':
