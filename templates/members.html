@@ -1,51 +1,67 @@
-{% extends "game-base.html" %}
+{% extends "game-base.html" %} {% block title %}Group Members{% endblock %} {% block head %} {{ super () }}
+<style>
+  .fa {
+    color: #00cccc;
+  }
 
-{% block title %}Group Members{% endblock %}
-
-{% block head %}
-  {{ super () }}
+  .img-fluid {
+    width: 350px;
+    height: 300px;
+    display: inline-block;
+  }
+</style>
 {% endblock %}
 
 {% block page_content %}
 <div class="container">
-<i class="fa fa-child fa-3x" aria-hidden="true"></i>
-<i class="fa fa-child fa-3x" aria-hidden="true"></i>
-<i class="fa fa-child fa-3x" aria-hidden="true"> Members</i>
-<br><br>
+  <i class="fa fa-child fa-3x" aria-hidden="true"></i>
+  <i class="fa fa-child fa-3x" aria-hidden="true"></i>
+  <i class="fa fa-child fa-3x" aria-hidden="true"> Members</i>
+  <br><br>
 
-<table class="table">
-     <thead>
-       <tr>
-         <th>#</th>
-         <th>Name</th>
-         <th>Major</th>
-         <th>Grade</th>
-       </tr>
-       <tr>
-         <td>1</td>
-         <td>Emily Zhang</td>
-         <td>MISY</td>
-         <td>Junior</td>
-       </tr>
-       <tr>
-         <td>2</td>
-         <td>Lujiang Chen</td>
-         <td>MISY</td>
-         <td>Junior</td>
-       </tr>
-       <tr>
-         <td>3</td>
-         <td>Johnny Guo</td>
-         <td>MISY</td>
-         <td>Sophomore</td>
-       </tr>
-     </thead>
-</table>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Major</th>
+        <th>Grade</th>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>Emily Zhang</td>
+        <td>MISY</td>
+        <td>Junior</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Lujiang Chen</td>
+        <td>MISY</td>
+        <td>Junior</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Johnny Guo</td>
+        <td>MISY</td>
+        <td>Sophomore</td>
+      </tr>
+    </thead>
+  </table>
+
+  <!-- Members Selfies -->
+  <section class="mt-5">
+    <div class="row text-center">
+      <div class="col-lg-4 col-md-12 col-sm-12">MEMBER 1
+        <img class="img-fluid" src="static/img/emily.jpeg" alt="Member1Selfie">
+      </div>
+      <div class="col-lg-4 col-md-12 col-sm-12">MEMBER 2
+        <img class="img-fluid" src="static/img/dog.jpg" alt="Member2Selfie">
+      </div>
+      <div class="col-lg-4 col-md-12 col-sm-12">MEMBER 3
+        <img class="img-fluid" src="#" alt="Member3Selfie">
+      </div>
+    </div>
+  </section>
 </div>
 
-<style>
- .fa {
-   color: SeaGreen;
- }
-</style>
 {% endblock %}

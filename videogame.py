@@ -10,12 +10,22 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'da
 db = SQLAlchemy(app)
 
 # define database tables
-class Professor(db.Model):
+class Publisher(db.Model):
+    __tablename__ = 'publishers'
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(64))
+    location = db.Column(db.CHAR(2))
+    year_founded = db.Column(db.Integer)
+    publisher = db.relationship('Game', backref='publisher', cascade='delete')
+
+class Game(db.Model):
     __tablename__ = 'games'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(64))
-    department = db.Column(db.String(64))
-    publisher = db.relationship('Course', backref='professor')
+    platform = db.Column(db.String(64))
+    year_of_release = db.Column(db.Integer)
+    genre = db.Column(db.String(64))
+    publisher_id = db.Column(db.Integer, db.ForeignKey('publishers.id'))
 
 
 @app.route('/')

@@ -12,15 +12,27 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <!-- Personal CSS -->
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/customstyle.css') }}"> {% endblock %}
+  <style>
+  #footer {
+      position: inherit;
+      text-align: center;
+      margin-top: 60px;
+      color: white;
+      bottom:0;
+      width:100%;
+      height:30px;
+      background:Turquoise;
+  }
+  </style>
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color:Turquoise;">
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color:Turquoise; font-weight: bold;">
     <div class="container">
-      <!-- <a class="navbar-brand" href="/">
-         <img src="{{ url_for('static', filename='img/mylogo.png') }}"
-          alt="name" width="150">
-       </a> -->
+      <a class="navbar-brand" href="/">
+         <img src="{{ url_for('static', filename='img/page-logo.png') }}"
+          alt="logo" width="250">
+       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -49,6 +61,15 @@
   </nav>
 
   {% block page_content %} {% endblock %}
+
+  {% block footer %}
+  <!--Footer-->
+  <div id="footer">
+      <footer>
+        <p>Video Game Databse designed by 2017 Fall MISY350 Group </p>
+      </footer>
+    </div>
+  {% endblock %}
 
   <!-- Scrips -->
   {% block scripts%}
