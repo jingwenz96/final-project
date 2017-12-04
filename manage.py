@@ -1,5 +1,5 @@
 from flask_script import Manager
-from videogame import app, db
+from videogame import app, db, Publisher, Game
 
 manager = Manager(app)
 
@@ -14,5 +14,6 @@ def deploy():
     db.session.add(publisher2)
     db.session.add(publisher3)
     db.session.commit()
+
 if __name__ == "__main__":
     manager.run()

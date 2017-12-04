@@ -25,6 +25,7 @@ class Game(db.Model):
     platform = db.Column(db.String(64))
     year_of_release = db.Column(db.Integer)
     genre = db.Column(db.String(64))
+    description = db.Column(db.Text)
     publisher_id = db.Column(db.Integer, db.ForeignKey('publishers.id'))
 
 
@@ -40,9 +41,10 @@ def member():
 def game():
     return render_template('games.html')
 
-@app.route('/publisher')
+@app.route('/publishers')
 def publisher():
-    return render_template('publisher.html')
+    publishers = Publisher.query.all()
+    return render_template('publisher.html', publishers=publishers)
 
 
 

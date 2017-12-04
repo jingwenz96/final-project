@@ -3,9 +3,48 @@
 {% block title %}Publisher Page{% endblock %}
 
 {% block head %}
-  {{ super () }}
+{{ super () }}
+<!--Custom Style-->
+<style>
+ #add {
+   left: 690px;
+   color: white;
+ }
+</style>
 {% endblock %}
 
 {% block page_content %}
-<h1>This is publisher Page.</h1>
-{% endblock %}
+<div class="container">
+ <i class="fa fa-user-circle-o fa-3x" aria-hidden="true"> Publishers
+ <a id="add" href="/publisher/add" class="btn btn-info" role="button" aria-disabled="true">Add Publishers</a>
+</i> {% if publishers %}
+ <table class="table">
+   <thead>
+     <tr>
+       <th>ID</th>
+       <th>Name</th>
+       <th>Location</th>
+       <th>Year_Founded</th>
+       <th></th>
+     </tr>
+   </thead>
+   <tbody>
+     {% for publisher in publishers %}
+     <tr>
+       <th scope="row">{{ publisher.id }}</th>
+       <td>{{ publisher.name }}</td>
+       <td>{{ publisher.year_founded }}</td>
+       <td>{{ publisher.location }}</td>
+       <td>
+         <a href="/publisher/edit/{{publisher.id}}" class="btn btn-outline-info" role="button" aria-disabled="true">Edit</a>
+         <a href="/publisher/delete/{{publisher.id}}" class="btn btn-outline-info" role="button">Delete</a>
+       </td>
+     </tr>
+     {% endfor%}
+   </tbody>
+ </table>
+ {% else %}
+ <h3>there is no publishers in the database yet.</h3> {% endif %}
+</div>
+
+{% endblock%}
