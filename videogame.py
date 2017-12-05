@@ -39,12 +39,29 @@ def member():
 
 @app.route('/games')
 def game():
-    return render_template('games.html')
+    games = Game.query.all()
+    return render_template('games.html',games=games)
 
 @app.route('/publishers')
 def publisher():
     publishers = Publisher.query.all()
     return render_template('publisher.html', publishers=publishers)
+
+
+@app.route('/publisher/add', methods=['GET', 'POST'])
+def add_publisher():
+    if request.method == 'GET':
+        return render_template('publisher-add.html')
+    if request.method == 'POST':
+        # get data from the form
+        name = request.form['name']
+        year_founded = request.form['year_founded']
+        location = request.form['location']
+        # insert the data into the database
+        publisher = Publisher(name=name, year_founded=year_founded,location=location)
+        db.session.add(publisher)
+        db.session.commit()
+        return redirect(url_for('publisher'))
 
 
 

@@ -1,14 +1,81 @@
 {% extends "game-base.html" %}
 
-{% block title %}Home Page{% endblock %}
+{% block title %}Game Page{% endblock %}
 
 {% block head %}
-  {{ super () }}
+{{ super () }}
+<!--Custom Style-->
+<style>
+ #add {
+   left: 690px;
+   color: white;
+ }
+</style>
 {% endblock %}
 
 {% block page_content %}
 <div class="container">
-<h1>This is GAME Page.</h1>
-<img class="img-fluid" src="static/img/supermario.jpg" alt="Super Mario">
+ <i class="fa fa-user-circle-o fa-3x" aria-hidden="true"> Game
+ <a id="add" href="/game/add" class="btn btn-info" role="button" aria-disabled="true">Add Games</a>
+</i> {% if games %}
+ <table class="table">
+   <thead>
+     <tr>
+       <th>ID</th>
+       <th>Name</th>
+       <th>Platform</th>
+       <th>YearOfRelease</th>
+       <th>Genre</th>
+       <th>Publisher</th>
+       <th>Description</th>
+       <th></th>
+     </tr>
+   </thead>
+   <tbody>
+     {% for game in games %}
+     <tr>
+       <th scope="row">{{ game.id }}</th>
+       <td>{{ game.name }}</td>
+       <td>{{ game.platform }}</td>
+       <td>{{ game.year_of_release }}</td>
+       <td>{{ game.genre }}</td>
+       <td>{{ game.publisher.name }}</td>
+       <td>
+          <!--  view description button trigger modal -->
+          <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#{{game.id}}">
+                View Info
+              </button>
+
+          <!-- Modal -->
+          <div class="modal fade" id="{{game.id}}" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">{{game.name}}</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                </div>
+                <div class="modal-body">
+                  <pre>{{game.description}}</pre>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </td>
+       <td>
+         <a href="/game/edit/{{game.id}}" class="btn btn-outline-info" role="button" aria-disabled="true">Edit</a>
+         <a href="/game/delete/{{game.id}}" class="btn btn-outline-info" role="button">Delete</a>
+       </td>
+     </tr>
+     {% endfor%}
+   </tbody>
+ </table>
+ {% else %}
+ <h3>there is no games in the database yet.</h3> {% endif %}
 </div>
-{% endblock %}
+
+{% endblock%}
