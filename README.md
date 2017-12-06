@@ -1,6 +1,6 @@
 ## Group Final Project: Video Game Database
 
-#### Contents:
+#### Contents for this Database:
 
 - Two Tables: Game, Publisher
 
