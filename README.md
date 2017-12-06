@@ -10,6 +10,14 @@
 
 - Publisher: PublisherID, Name, Location (3 columns)
 
+#### Process:
+- [x] Database Setup
+- [ ] Complete Table contents
+- [x] Members Photo
+- [x] Add
+- [x] Edit
+- [ ] Delete
+
 #### Setup Instructions:
 
 Install `virtualenv` if needed.
