@@ -1,12 +1,33 @@
-# final-project
-Misy350 group project
+## Group Final Project: Video Game Database
 
-Video Game Database
+- Two Tables: Game, Publisher
 
-Two Tables: Game, Publisher 
+- Relationship: A game can only be published by one publisher; A Publisher can publish many games.
 
-Relationship: A game can only be published by one publisher; A Publisher can publish many games.
+- Game: GameID, Name, Platform, Genre (4 columns)
 
-Game: GameID, Name, Platform, Genre (4 columns)
+- Publisher: PublisherID, Name, Location (3 columns)
 
-Publisher: PublisherID, Name, Location (3 columns)
+#### Setup Instructions:
+
+Install `virtualenv` if needed.
+
+1. Activate the virtual environment
+    ```
+    $ source venv/bin/activate
+    ```
+
+2. Install packages needed for this project:
+    ```
+    $ pip install -r requirements.txt
+    ```
+
+3. Initialize the database:
+    ```
+    $ python manage.py deploy
+    ```
+
+To run the development server (use `-d` to enable debugger and reloader):
+    ```
+    $ python manage.py runserver -d
+    ```
