@@ -42,6 +42,40 @@ def game():
     games = Game.query.all()
     return render_template('games.html',games=games)
 
+
+@app.route('/game/add', methods=['GET', 'POST'])
+def add_games():
+    if request.method == 'GET':
+        publishers = Publisher.query.all()
+        return render_template('game-add.html', publishers=publishers)
+    if request.method == 'POST':
+        # get data from the form
+        name = request.form['name']
+        platform = request.form['platform']
+        year_of_release = request.form['year_of_release']
+        genre = request.form['genre']
+        description = request.form['description']
+        publisher_name = request.form['publisher']
+        publisher = Publisher.query.filter_by(name=publisher_name).first()
+        game = Game(name=name, platform=platform, year_of_release=year_of_release, genre=genre, description=description, publisher=publisher)
+
+        # insert the data into the database
+        db.session.add(game)
+        db.session.commit()
+        return redirect(url_for('game'))
+
+'''
+@app.route('/game/delete/<int:id>', methods=['GET', 'POST'])
+def delete_game(id):
+    game = Game.query.filter_by(id=id).first()
+    publishers = Publisher.query.all()
+    if request.method == 'GET':
+        return render_template('game-delete.html', game=game, publishers=publishers)
+    if request.method == 'POST':
+        db.session.delete(game)
+        db.session.commit()
+        return redirect(url_for('game')
+'''
 @app.route('/publishers')
 def publisher():
     publishers = Publisher.query.all()
@@ -63,7 +97,17 @@ def add_publisher():
         db.session.commit()
         return redirect(url_for('publisher'))
 
-
+'''
+@app.route('/publisher/delete/<int:id>', methods=['GET', 'POST'])
+def delete_publisher(id):
+    publisher = Publisher.query.filter_by(id=id).first()
+    if request.method == 'GET':
+        return render_template('publisher-delete.html', publisher=publisher)
+    if request.method == 'POST':
+        db.session.delete(publisher)
+        db.session.commit()
+        return redirect(url_for('publisher'))
+'''
 
 if __name__ == '__main__':
     app.run(debug=True)
