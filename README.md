@@ -1,5 +1,7 @@
 ## Group Final Project: Video Game Database
 
+#### Contents:
+
 - Two Tables: Game, Publisher
 
 - Relationship: A game can only be published by one publisher; A Publisher can publish many games.
@@ -13,21 +15,13 @@
 Install `virtualenv` if needed.
 
 1. Activate the virtual environment
-    ```
-    $ source venv/bin/activate
-    ```
+    `$ source venv/bin/activate`
 
 2. Install packages needed for this project:
-    ```
-    $ pip install -r requirements.txt
-    ```
+    `$ pip install -r requirements.txt`
 
 3. Initialize the database:
-    ```
-    $ python manage.py deploy
-    ```
+    `$ python manage.py deploy`
 
-To run the development server (use `-d` to enable debugger and reloader):
-    ```
-    $ python manage.py runserver -d
-    ```
+4. To run the development server (use `-d` after `runserver` to enable debugger and reloader):
+    `$ python manage.py runserver`
