@@ -15,7 +15,7 @@
 - [ ] Complete Table contents
 - [x] Members Photo
 - [x] Add
-- [x] Edit
+- [ ] Edit
 - [ ] Delete
 
 #### Setup Instructions:
