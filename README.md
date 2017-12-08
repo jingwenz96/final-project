@@ -6,9 +6,9 @@
 
 - Relationship: A game can only be published by one publisher; A Publisher can publish many games.
 
-- Game: GameID, Name, Platform, Genre (4 columns)
+- Game: GameID, Name, Platform, Year_of_release, Genre, Description, PublisherID(FK) (7 columns)
 
-- Publisher: PublisherID, Name, Location (3 columns)
+- Publisher: PublisherID(PK), Name, Location (3 columns)
 
 #### Process:
 - [x] Database Setup
