@@ -12,8 +12,8 @@
 
 #### Process:
 - [x] Database Setup
-- [ ] Complete Table contents
-- [x] Members Photo
+- [x] Complete Table contents
+- [x] Members Page
 - [x] Add
 - [ ] Edit
 - [ ] Delete
