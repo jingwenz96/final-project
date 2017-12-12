@@ -9,6 +9,7 @@
  #add {
    left: 690px;
    color: white;
+   font-family: Verdana, Helvetica, Sans-serif;
  }
 </style>
 {% endblock %}
@@ -33,8 +34,8 @@
      <tr>
        <th scope="row">{{ publisher.id }}</th>
        <td>{{ publisher.name }}</td>
-       <td>{{ publisher.year_founded }}</td>
        <td>{{ publisher.location }}</td>
+       <td>{{ publisher.year_founded }}</td>
        <td>
          <a href="/publisher/edit/{{publisher.id}}" class="btn btn-outline-info" role="button" aria-disabled="true">Edit</a>
          <a href="/publisher/delete/{{publisher.id}}" class="btn btn-outline-info" role="button">Delete</a>

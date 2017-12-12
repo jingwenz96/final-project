@@ -4,21 +4,21 @@
 {% block page_content%}
   <!-- Page Content -->
   <div class="container">
-    <h1><i class="fa fa-refresh" aria-hidden="true"></i> Delete Publisher:</h1>
+    <h1><i class="fa fa-refresh fa-spin" aria-hidden="true"></i> Delete Publisher:</h1>
     <form action="/publisher/delete/{{publisher.id}}" method="post">
       <div class="form-group">
         <label>Name</label>
         <input class="form-control" type="text" name="name" value="{{publisher.name}}" required="true" readonly="true">
       </div>
       <div class="form-group">
-        <label>Year_Founded</label>
-        <textarea class="form-control" name="year_founded" required="true" readonly="true">{{publisher.year_founded}}</textarea>
+        <label>Location</label>
+        <input class="form-control" type="text" name="location" value="{{publisher.location}}" required="true" readonly="true">
       </div>
       <div class="form-group">
-        <label>Location</label>
-        <textarea class="form-control" name="location" required="true" readonly="true">{{publisher.location}}</textarea>
+        <label>year_founded</label>
+        <input class="form-control" type="text" name="year_founded" value="{{publisher.year_founded}}" required="true" readonly="true">
       </div>
-      <button type="submit" class="btn btn-warning" id="delete_btn" style="color:white;">Delete</button>
+      <button type="submit" class="btn btn-outline-info" id="delete_btn">Delete</button>
     </form>
   </div>
 
@@ -29,7 +29,7 @@
   <script>
   $(document).ready(function () {
     $('#delete_btn').click(function () {
-      if (! confirm('All related publishers will be deleted! Are you sure?')) {
+      if (! confirm('All related games will also be deleted! Are you sure?')) {
         return false;
       }
     })

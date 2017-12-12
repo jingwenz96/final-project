@@ -1,14 +1,18 @@
 {% extends "game-base.html"%}
-{% block title %}Add Publisher{% endblock %}
+{% block title %}Edit Publisher{% endblock %}
 {% block page_content%}
 
   <!-- Page Content -->
   <div class="container">
-    <h1 class="mt-5"><i class="fa fa-user-circle-o" aria-hidden="true"></i> Add Publisher:</h1>
-    <form action="/publisher/add" method="post">
+    <h1><i class="fa fa-refresh fa-spin" aria-hidden="true"></i> Edit Publisher:</h1>
+    <form action="/publisher/edit/{{publisher.id}}" method="post">
       <div class="form-group">
         <label>Name</label>
-        <input class="form-control" type="text" name="name" required="true">
+        <input class="form-control" type="text" name="name" value="{{publisher.name}}" required="true">
+      </div>
+      <div class="form-group">
+        <label>Location</label>
+        <input class="form-control" type="text" name="location" value="{{publisher.location}}" required="true">
       </div>
       <div class="form-group">
         <label>Year_Founded</label>
@@ -22,12 +26,7 @@
           {% endfor %}
         </select>
       </div>
-      <div class="form-group">
-        <label>Location</label>
-        <textarea class="form-control" name="location" placeholder="location" required="true"></textarea>
-      </div>
-      <button type="submit" class="btn btn-outline-info">Add Publisher</button>
-
+      <button type="submit" class="btn btn-outline-info">Save Changes</button>
     </form>
   </div>
 

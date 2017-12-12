@@ -37,11 +37,56 @@ def home():
 def member():
     return render_template('members.html')
 
+# Publisher Page
+@app.route('/publishers')
+def publishers():
+    publishers = Publisher.query.all()
+    return render_template('publishers.html', publishers=publishers)
+
+@app.route('/publisher/add', methods=['GET', 'POST'])
+def add_publishers():
+    if request.method == 'GET':
+        return render_template('publisher-add.html')
+    if request.method == 'POST':
+        # get data from the form
+        name = request.form['name']
+        location = request.form['location']
+        year_founded = request.form['year_founded']
+        # insert the data into the database
+        publisher = Publisher(name=name, location=location, year_founded=year_founded)
+        db.session.add(publisher)
+        db.session.commit()
+        return redirect(url_for('publishers'))
+
+@app.route('/publisher/edit/<int:id>', methods=['GET', 'POST'])
+def edit_professor(id):
+    publisher = Publisher.query.filter_by(id=id).first()
+    if request.method == 'GET':
+        return render_template('publisher-edit.html', publisher=publisher)
+    if request.method == 'POST':
+        # update data based on the form data
+        publisher.name = request.form['name']
+        publisher.location = request.form['location']
+        publisher.year_founded = request.form['year_founded']
+        # update the database
+        db.session.commit()
+        return redirect(url_for('publishers'))
+
+@app.route('/publisher/delete/<int:id>', methods=['GET', 'POST'])
+def delete_publisher(id):
+    publisher = Publisher.query.filter_by(id=id).first()
+    if request.method == 'GET':
+        return render_template('publisher-delete.html', publisher=publisher)
+    if request.method == 'POST':
+        db.session.delete(publisher)
+        db.session.commit()
+        return redirect(url_for('publishers'))
+
+# Game Page
 @app.route('/games')
-def game():
+def games():
     games = Game.query.all()
     return render_template('games.html',games=games)
-
 
 @app.route('/game/add', methods=['GET', 'POST'])
 def add_games():
@@ -62,52 +107,7 @@ def add_games():
         # insert the data into the database
         db.session.add(game)
         db.session.commit()
-        return redirect(url_for('game'))
-
-'''
-@app.route('/game/delete/<int:id>', methods=['GET', 'POST'])
-def delete_game(id):
-    game = Game.query.filter_by(id=id).first()
-    publishers = Publisher.query.all()
-    if request.method == 'GET':
-        return render_template('game-delete.html', game=game, publishers=publishers)
-    if request.method == 'POST':
-        db.session.delete(game)
-        db.session.commit()
-        return redirect(url_for('game')
-'''
-@app.route('/publishers')
-def publisher():
-    publishers = Publisher.query.all()
-    return render_template('publisher.html', publishers=publishers)
-
-
-@app.route('/publisher/add', methods=['GET', 'POST'])
-def add_publisher():
-    if request.method == 'GET':
-        return render_template('publisher-add.html')
-    if request.method == 'POST':
-        # get data from the form
-        name = request.form['name']
-        year_founded = request.form['year_founded']
-        location = request.form['location']
-        # insert the data into the database
-        publisher = Publisher(name=name, year_founded=year_founded,location=location)
-        db.session.add(publisher)
-        db.session.commit()
-        return redirect(url_for('publisher'))
-
-'''
-@app.route('/publisher/delete/<int:id>', methods=['GET', 'POST'])
-def delete_publisher(id):
-    publisher = Publisher.query.filter_by(id=id).first()
-    if request.method == 'GET':
-        return render_template('publisher-delete.html', publisher=publisher)
-    if request.method == 'POST':
-        db.session.delete(publisher)
-        db.session.commit()
-        return redirect(url_for('publisher'))
-'''
+        return redirect(url_for('games'))
 
 if __name__ == '__main__':
     app.run(debug=True)
