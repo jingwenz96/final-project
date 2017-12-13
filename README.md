@@ -15,8 +15,10 @@
 - [x] Complete Table contents
 - [x] Members Page
 - [x] Add
-- [ ] Edit
-- [ ] Delete
+- [x] Edit
+- [x] Delete
+
+ALL DONE!
 
 #### Setup Instructions:
 

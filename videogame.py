@@ -123,6 +123,7 @@ def edit_game(id):
         game.year_of_release = request.form['year_of_release']
         game.genre = request.form['genre']
         game.description = request.form['description']
+        publisher_name = request.form['publisher']
         publisher = Publisher.query.filter_by(name=publisher_name).first()
         game.publisher = publisher
         # update the database
