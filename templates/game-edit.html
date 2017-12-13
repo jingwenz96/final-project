@@ -1,0 +1,46 @@
+{% extends "game-base.html"%}
+{% block title %}Edit Games{% endblock %}
+{% block page_content%}
+
+  <!-- Page Content -->
+  <div class="container">
+    <h1><i class="fa fa-refresh fa-spin" aria-hidden="true"></i> Edit Game:</h1>
+    <form action="/game/edit/{{game.id}}" method="post">
+      <div class="form-group">
+        <label>Name</label>
+        <input class="form-control" type="text" name="name" value="{{game.name}}" required="true">
+      </div>
+      <div class="form-group">
+        <label>Platform</label>
+        <input class="form-control" type="text" name="location" value="{{game.platform}}" required="true">
+      </div>
+      <div class="form-group">
+        <label>Year of Release</label>
+        <input class="form-control" type="text" name="name" value="{{game.year_of_release}}" required="true">
+      </div>
+      <div class="form-group">
+        <label>Genre</label>
+        <input class="form-control" type="text" name="name" value="{{game.genre}}" required="true">
+      </div>
+      <div class="form-group">
+        <label>Description</label>
+        <input class="form-control" type="text" name="name" value="{{game.description}}" required="true">
+      </div>
+      <div class="form-group">
+       <label>Publisher</label>
+       <select class="form-control" name="publisher">
+         {% for publisher in publishers %}
+           {% if publisher == game.publisher %}
+             <option selected="selected">{{publisher.name}}</option>
+           {% else %}
+             <option>{{publisher.name}}</option>
+           {% endif %}
+         {% endfor %}
+       </select>
+     </div>
+
+      <button type="submit" class="btn btn-outline-info">Save Changes</button>
+    </form>
+  </div>
+
+{% endblock%}

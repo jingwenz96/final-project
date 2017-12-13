@@ -59,7 +59,7 @@ def add_publishers():
         return redirect(url_for('publishers'))
 
 @app.route('/publisher/edit/<int:id>', methods=['GET', 'POST'])
-def edit_professor(id):
+def edit_publisher(id):
     publisher = Publisher.query.filter_by(id=id).first()
     if request.method == 'GET':
         return render_template('publisher-edit.html', publisher=publisher)
@@ -106,6 +106,39 @@ def add_games():
 
         # insert the data into the database
         db.session.add(game)
+        db.session.commit()
+        return redirect(url_for('games'))
+
+
+@app.route('/game/edit/<int:id>', methods=['GET', 'POST'])
+def edit_game(id):
+    game = Game.query.filter_by(id=id).first()
+    publishers = Publisher.query.all()
+    if request.method == 'GET':
+        return render_template('game-edit.html', game=game, publishers=publishers)
+    if request.method == 'POST':
+        # update data based on the form data
+        game.name = request.form['name']
+        game.platform = request.form['platform']
+        game.year_of_release = request.form['year_of_release']
+        game.genre = request.form['genre']
+        game.description = request.form['description']
+        publisher = Publisher.query.filter_by(name=publisher_name).first()
+        game.publisher = publisher
+        # update the database
+        db.session.commit()
+        return redirect(url_for('games'))
+
+
+@app.route('/game/delete/<int:id>', methods=['GET', 'POST'])
+def delete_game(id):
+    game = Game.query.filter_by(id=id).first()
+    publishers = Publisher.query.all()
+    if request.method == 'GET':
+        game=Game.query.filter_by(id=id).first()
+        return render_template('game-delete.html', game=game, publishers=publishers)
+    if request.method == 'POST':
+        db.session.delete(game)
         db.session.commit()
         return redirect(url_for('games'))
 

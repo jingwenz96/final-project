@@ -1,0 +1,60 @@
+{% extends "game-base.html"%}
+{% block title %}Delete Game{% endblock %}
+
+{% block page_content%}
+  <!-- Page Content -->
+  <div class="container">
+    <h1><i class="fa fa-refresh fa-spin" aria-hidden="true"></i> Delete Game:</h1>
+    <form action="/game/delete/{{game.id}}" method="post">
+      <div class="form-group">
+        <label>Name</label>
+        <input class="form-control" type="text" name="name" value="{{game.name}}" required="true" readonly="true">
+      </div>
+      <div class="form-group">
+        <label>Platform</label>
+        <input class="form-control" type="text" name="location" value="{{game.platform}}" required="true" readonly="true">
+      </div>
+      <div class="form-group">
+        <label>Year of Release</label>
+        <input class="form-control" type="text" name="name" value="{{game.year_of_release}}" required="true" readonly="true">
+      </div>
+      <div class="form-group">
+        <label>Genre</label>
+        <input class="form-control" type="text" name="name" value="{{game.genre}}" required="true" readonly="true">
+      </div>
+      <div class="form-group">
+        <label>Description</label>
+        <input class="form-control" type="text" name="name" value="{{game.description}}" required="true" readonly="true">
+      </div>
+      <div class="form-group">
+        <label>Publisher</label>
+        <select class="form-control" name="publisher" readonly="true">
+          {% for publisher in publishers %}
+            {% if publisher == game.publisher %}
+              <option selected="selected">{{publisher.name}}</option>
+            {% else %}
+              <option>{{publisher.name}}</option>
+            {% endif %}
+          {% endfor %}
+        </select>
+      </div>
+      <button type="submit" class="btn btn-outline-info" id="delete_btn">Delete</button>
+    </form>
+
+     </div>
+
+
+{% endblock%}
+
+{% block scripts%}
+  {{super()}}
+  <script>
+  $(document).ready(function () {
+    $('#delete_btn').click(function () {
+      if (! confirm('All related games will also be deleted! Are you sure?')) {
+        return false;
+      }
+    })
+  });
+  </script>
+{% endblock%}
